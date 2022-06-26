@@ -134,8 +134,13 @@ export default {
 
 .loading {
   text-align: center;
-  padding-top:300px;
-  height:100vh;
+  height: 100vh;
+}
+
+.loading>img{
+  position: fixed;
+  top: 50%;
+  transform: translateY(-40px);
 }
 
 .replyUp a:nth-of-type(2) {

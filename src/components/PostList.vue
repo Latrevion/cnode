@@ -101,11 +101,6 @@ export default {
 </script>
 
 <style scoped>
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 ul {
   padding: 0;
@@ -228,8 +223,15 @@ a:hover {
 }
 
 .loading {
-  padding-top: 300px;
+  /*padding-top: 300px;*/
   text-align: center;
   height: 100vh;
+}
+
+
+.loading>img{
+  position: fixed;
+  top: 50%;
+  transform: translateY(-40px);
 }
 </style>

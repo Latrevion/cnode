@@ -32,7 +32,7 @@
     <div class="topics">
       <p>创建的主题</p>
       <ul>
-        <li v-for="item in userinfo.recent_topics">
+        <li v-for="item in limitby5">
           <router-link :to="{
             name:'post_content',
             params:{
@@ -56,6 +56,12 @@ name:'UserInfo',
     userinfo:{}
   }
   },
+  computed:{
+    limitby5() {
+      if (this.userinfo.recent_topics) {
+        return this.userinfo.recent_topics.slice(0, 5)
+      }
+  }},
   methods:{
     getData() {
       this.$http.get(`https://cnodejs.org/api/v1/user/${this.$route.params.name}`)
@@ -114,5 +120,17 @@ name:'UserInfo',
 .userInformation > div >ul > li > a {
   color: #094E99;
   text-decoration: none;
+}
+
+.loading {
+  text-align: center;
+  height: 100vh;
+}
+
+
+.loading>img{
+  position: fixed;
+  top: 50%;
+  transform: translateY(-40px);
 }
 </style>

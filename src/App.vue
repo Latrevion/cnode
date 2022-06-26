@@ -23,8 +23,23 @@ export default {
 </script>
 
 <style>
+html,body{
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  background-color: #e1e1e1;
+}
+
+#app{
+  height: 100%;
+}
+
 .main{
   width: 80%;
   margin: 0 auto;
+  /*height: 100%;*/
 }
 </style>
