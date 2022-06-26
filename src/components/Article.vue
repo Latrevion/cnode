@@ -134,9 +134,8 @@ export default {
 
 .loading {
   text-align: center;
-  /*padding-top: calc(50% - 40px);*/
-  padding-top: 50% ;
-  height: calc(  100vh - 50px );
+  padding-top:300px;
+  height:100vh;
 }
 
 .replyUp a:nth-of-type(2) {
