@@ -2,7 +2,7 @@
 <div class="UserInfo">
   <!--    //在数据未返回的时候，显示这个正在加载的gif-->
   <div class="loading" v-if="isLoading">
-    <img src="../assets/loading.gif">
+    <img src="../assets/loading.gif"  style="width:80px;height:80px;border-radius: 50%">
   </div>
   <div class="userInformation" v-else>
     <section>

@@ -2,7 +2,7 @@
   <div class="article">
     <!--  //如果正在加载显示此处div-->
     <div class="loading" v-if="isLoading">
-      <img src="../assets/loading.gif">
+      <img src="../assets/loading.gif" style="width:80px;height:80px;border-radius: 50%">
     </div>
     <div v-else>
       <div class="topic_header">
@@ -134,7 +134,9 @@ export default {
 
 .loading {
   text-align: center;
-  padding-top: 300px;
+  /*padding-top: calc(50% - 40px);*/
+  padding-top: 50% ;
+  height: calc(  100vh - 50px );
 }
 
 .replyUp a:nth-of-type(2) {

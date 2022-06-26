@@ -2,7 +2,7 @@
   <div class="PostList">
     <!--    //在数据未返回的时候，显示这个正在加载的gif-->
     <div class="loading" v-if="isLoading">
-      <img src="../assets/loading.gif">
+      <img src="../assets/loading.gif" style="width:80px;height:80px ;border-radius: 50%">
     </div>
     <!--    //代表我们的主题帖子列表-->
     <div class="posts" v-else>
@@ -222,7 +222,8 @@ a:hover {
 }
 
 .loading {
+  padding-top: calc(50% - 150px);
   text-align: center;
-  padding-top: 300px;
+  height: 100vh;
 }
 </style>
