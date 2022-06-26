@@ -9,11 +9,26 @@
       <ul>
         <li>
           <div class="toobar">
-            <span>全部</span>
-            <span>精华</span>
-            <span>分享</span>
-            <span>问答</span>
-            <span>招聘</span>
+            <span
+            @click="changeActive('all')"
+            :class="[{'active':active==='all'}]"
+            >全部</span>
+            <span
+              @click="changeActive('good')"
+            :class="[{'active':active==='good'}]"
+            >精华</span>
+            <span
+            @click="changeActive('share')"
+            :class="[{'active':active==='share'}]"
+            >分享</span>
+            <span
+            @click="changeActive('ask')"
+            :class="[{'active':active==='ask'}]"
+            >问答</span>
+            <span
+            @click="changeActive('job')"
+            :class="[{'active':active==='job'}]"
+            >招聘</span>
           </div>
         </li>
         <li v-for="post in posts">
@@ -66,17 +81,37 @@ export default {
   },
   data() {
     return {
+      active:'all',
       isLoading: false,
       posts: [] ,//代表页面的列表数组
       postpage:1
     }
   },
   methods: {
+    changeActive(tab){
+      this.active = tab
+      this.postpage=1
+      this.$router.push(
+        {
+          name:'root',
+          query: {
+              tab:this.active,
+              page:this.postpage
+          }
+        });
+        this.getData();
+    },
     getData() {
-      this.$http.get("https://cnodejs.org/api/v1/topics", {
+      let that = this
+      this.isLoading =true
+      this.$http
+        .get("https://cnodejs.org/api/v1/topics", {
         params:{
-        page: this.postpage,
-        limit: 20
+        // page: this.postpage,
+          page:that.$route.query.page ||1,
+
+        // limit: 20
+          tab:that.$route.query.tab ||'all'
         }
       })
         .then(res => {
@@ -96,7 +131,7 @@ export default {
   beforeMount() {
     this.isLoading = true //加载成功之前显示加载动画
     this.getData() //在页面加载之前获取数据
-  }
+  },
 }
 </script>
 
@@ -223,15 +258,21 @@ a:hover {
 }
 
 .loading {
-  /*padding-top: 300px;*/
   text-align: center;
   height: 100vh;
 }
-
 
 .loading>img{
   position: fixed;
   top: 50%;
   transform: translateY(-40px);
+}
+
+
+.active{
+  background-color: #80bd01;
+  color: white!important;
+  padding: 3px 4px;
+  border-radius: 3px;
 }
 </style>
