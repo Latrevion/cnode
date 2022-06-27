@@ -42,9 +42,7 @@
           <!--          帖子的分类-->
           <span
             :class="[{put_good:(post.good ===true),put_top:(post.top===true),'topiclist-tab':(post.good!==true && post.top !==true)}]">
-            <span>
-              {{ post | tabFormatter }}
-            </span>
+            <span>{{ post | tabFormatter }}</span>
           </span>
           <!--          标题-->
           <router-link :to="{
@@ -207,6 +205,7 @@ li span {
   color: #fff;
   font-size: 12px;
   margin-right: 10px;
+
 }
 
 .topiclist-tab {
