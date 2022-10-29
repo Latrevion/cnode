@@ -1,23 +1,14 @@
 <template>
   <div class="pagination">
-    <button @click="changeBtn">
-      首页
-    </button>
-
-    <button @click="changeBtn">
-      上一页
-    </button>
-
+    <button @click="changeBtn">首页</button>
+    <button @click="changeBtn">上一页</button>
     <button v-if="judge" class="pagebtn">.....</button>
-
     <button v-for="btn in pagebtns"
             @click="changeBtn(btn)"
             :class="[{currentPage:btn===currentPage},'pagebtn']">
       {{ btn }}
     </button>
-    <button @click="changeBtn">
-      下一页
-    </button>
+    <button @click="changeBtn">下一页</button>
   </div>
 </template>
 
@@ -28,7 +19,7 @@ export default {
   name: "Pagination",
   data() {
     return {
-      pagebtns: [1, 2, 3, 4, 5, "....."],
+      pagebtns: [1,2,3,4,5,"....."],
       currentPage: 1,
       judge: false,
     }
@@ -39,17 +30,17 @@ export default {
       if (typeof page !== "number") {
         switch (page.target.innerText) {
           case "上一页":
-            $("button.currentPage").prev().click()
-            break
+            $("button.currentPage").prev().click();
+            break;
           case "下一页":
-            $("button.currentPage").next().click()
-            break
+            $("button.currentPage").next().click();
+            break;
           case "首页":
-            this.pagebtns = [1, 2, 3, 4, 5, "....."]
-            this.changeBtn(1)
-            break
+            this.pagebtns = [1,2,3,4,5,"....."]
+            this.changeBtn(1);
+            break;
           default:
-            break
+            break;
         }
         return
       }
@@ -69,7 +60,7 @@ export default {
         //移除最后一个数字
         this.pagebtns.splice(5, 1)
       }
-      this.$emit('handleList',this.currentPage);
+      this.$emit("handleList", this.currentPage)
     }
   }
 }
@@ -82,7 +73,6 @@ export default {
   background-color: white;
   padding: 6px 20px;
   border-radius: 5px;
-  /*box-shadow: 0px 2px 9px #888888;*/
   border: 1px solid #888888;
 }
 
@@ -92,7 +82,6 @@ button {
   color: #778087;
   border-radius: 3px;
   outline: none;
-  height: 21px;
   cursor: pointer;
   padding: 0 2px;
   width: 55px;

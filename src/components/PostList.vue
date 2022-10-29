@@ -99,17 +99,13 @@ export default {
         });
         this.getData();
     },
-    getData() {
-      let that = this
-      this.isLoading =true
+     getData(){
+      let that =this
       this.$http
         .get("https://cnodejs.org/api/v1/topics", {
         params:{
-        // page: this.postpage,
-          page:that.$route.query.page ||1,
-
-        // limit: 20
-          tab:that.$route.query.tab ||'all'
+        page: this.postpage,
+        limit: 20
         }
       })
         .then(res => {
@@ -122,7 +118,7 @@ export default {
         })
     },
     renderList(value) {
-      this.postpage =value;
+      this.postpage = value;
       this.getData()
     }
   },
